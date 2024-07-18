@@ -1,0 +1,22 @@
+[workspace]
+
+members = [
+    "tutorial-1/app",
+    "tutorial-1/wasm",
+    "tutorial-2/app",
+    "tutorial-2/wasm",
+]
+
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+
+[workspace.dependencies]
+sails = { git = "https://github.com/gear-tech/sails" }
+gstd = { version = "1.4.2", features = ["debug"] }
+gwasm-builder = { package = "gear-wasm-builder", version = "1.4.2" }
+sails-idl-gen = { git = "https://github.com/gear-tech/sails" }
+parity-scale-codec = { version = "3.6", default-features = false }
+scale-info = { version = "2.10", default-features = false }

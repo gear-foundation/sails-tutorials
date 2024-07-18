@@ -1,0 +1,8 @@
+[package]
+name = "hello-world"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+sails.workspace = true
+gstd.workspace = true

@@ -1,0 +1,17 @@
+[package]
+name = "simple_ft_wasm"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+simple-ft = { path = "../app" }
+sails.workspace = true
+
+[build-dependencies]
+gwasm-builder.workspace = true
+simple-ft = { path = "../app" }
+sails-idl-gen.workspace = true
+
+[lib]
+crate-type = ["rlib"]
+name = "simple_ft_wasm"

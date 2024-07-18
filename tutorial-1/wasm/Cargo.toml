@@ -1,0 +1,17 @@
+[package]
+name = "hello_world_wasm"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+hello-world = { path = "../app" }
+sails.workspace = true
+
+[build-dependencies]
+gwasm-builder.workspace = true
+hello-world = { path = "../app" }
+sails-idl-gen.workspace = true
+
+[lib]
+crate-type = ["rlib"]
+name = "hello_world_wasm"

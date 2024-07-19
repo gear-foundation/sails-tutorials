@@ -8,6 +8,9 @@ pub struct MyProgram;
 
 #[gprogram]
 impl MyProgram {
+    pub fn new() -> Self {
+        Self
+    }
     pub fn hello_world(&self) -> HelloWorld {
         HelloWorld::default()
     }

@@ -1,4 +1,4 @@
-use simple_ft::MyProgram;
+use ft::MyProgram;
 use std::{env, fs::File, path::PathBuf};
 
 fn main() {

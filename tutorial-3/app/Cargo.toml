@@ -1,0 +1,11 @@
+[package]
+name = "ft"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+sails.workspace = true
+gstd.workspace = true
+parity-scale-codec.workspace = true
+scale-info.workspace = true
+vft = { package = "vft-service", git = "https://github.com/gear-foundation/standards" }

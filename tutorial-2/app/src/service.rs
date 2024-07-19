@@ -1,4 +1,4 @@
-use sails::{prelude::*, collections::HashMap};
+use sails::{collections::HashMap, prelude::*};
 
 pub struct Storage {
     name: String,
@@ -22,7 +22,11 @@ pub struct Token;
 
 #[derive(Encode, TypeInfo)]
 enum TokenEvent {
-    Transfer { from: ActorId, to: ActorId, amount: U256 },
+    Transfer {
+        from: ActorId,
+        to: ActorId,
+        amount: U256,
+    },
 }
 
 #[gservice(events = TokenEvent)]
@@ -56,7 +60,7 @@ impl Token {
 
         let _ = self.notify_on(TokenEvent::Transfer { from, to, amount });
     }
-    
+
     pub fn name(&self) -> &'static str {
         let storage = Storage::get();
         &storage.name

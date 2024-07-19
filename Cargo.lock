@@ -1953,6 +1953,27 @@ dependencies = [
 ]
 
 [[package]]
+name = "ft"
+version = "0.1.0"
+dependencies = [
+ "gstd",
+ "parity-scale-codec",
+ "sails",
+ "scale-info",
+ "vft-service",
+]
+
+[[package]]
+name = "ft_wasm"
+version = "0.1.0"
+dependencies = [
+ "ft",
+ "gear-wasm-builder",
+ "sails",
+ "sails-idl-gen",
+]
+
+[[package]]
 name = "funty"
 version = "2.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -6688,6 +6709,18 @@ name = "version_check"
 version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "49874b5167b65d7193b8aba1567f5c7d93d001cafc34600cee003eda787e483f"
+
+[[package]]
+name = "vft-service"
+version = "0.1.0"
+source = "git+https://github.com/gear-foundation/standards#88492c96b7076f01e3a481f4813d0dd246717dcd"
+dependencies = [
+ "gstd",
+ "log",
+ "parity-scale-codec",
+ "sails",
+ "scale-info",
+]
 
 [[package]]
 name = "wabt"

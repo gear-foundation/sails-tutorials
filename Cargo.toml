@@ -5,6 +5,8 @@ members = [
     "tutorial-1/wasm",
     "tutorial-2/app",
     "tutorial-2/wasm",
+    "tutorial-3/app",
+    "tutorial-3/wasm",
 ]
 
 resolver = "2"

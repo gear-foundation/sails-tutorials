@@ -1,17 +1,23 @@
 #![no_std]
-use sails::prelude::*;
-mod service;
-use service::HelloWorld;
+use sails_rs::prelude::*;
 
-#[derive(Default)]
+pub struct HelloWorld(());
+
+#[service]
+impl HelloWorld {
+    pub fn greeting(&mut self) -> &'static str {
+        "Hello, world!"
+    }
+}
+
 pub struct MyProgram;
 
-#[gprogram]
+#[program]
 impl MyProgram {
     pub fn new() -> Self {
         Self
     }
     pub fn hello_world(&self) -> HelloWorld {
-        HelloWorld::default()
+        HelloWorld(())
     }
 }

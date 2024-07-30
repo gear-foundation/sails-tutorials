@@ -3,6 +3,6 @@ constructor {
 };
 
 service HelloWorld {
-  HelloWorld : () -> str;
+  Greeting : () -> str;
 };
 

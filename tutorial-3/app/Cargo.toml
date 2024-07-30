@@ -4,7 +4,7 @@ version.workspace = true
 edition.workspace = true
 
 [dependencies]
-sails.workspace = true
+sails-rs.workspace = true
 gstd.workspace = true
 parity-scale-codec.workspace = true
 scale-info.workspace = true

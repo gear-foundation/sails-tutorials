@@ -13,8 +13,23 @@ pub struct VftService {
     vft: BaseVftService,
 }
 
+static mut ADMIN: Option<ActorId> = None;
+
+fn set_admin(admin: ActorId) {
+    unsafe {
+        ADMIN = Some(admin);
+    }
+}
+
+fn get_admin() -> &'static ActorId {
+    unsafe {
+       ADMIN.as_ref().expect("Contract is not initialized")
+    }
+}
+
 impl VftService {
-    pub fn init(name: String, symbol: String, decimals: u8) -> Self {
+    pub fn init(name: String, symbol: String, decimals: u8, admin: ActorId) -> Self {
+        set_admin(admin);
         VftService {
             vft: <BaseVftService>::seed(name, symbol, decimals),
         }
@@ -28,6 +43,7 @@ impl VftService {
         }
     }
     pub fn mint(&mut self, to: ActorId, value: U256) {
+        self.only_admin();
         let balances = Storage::balances();
         let total_supply = Storage::total_supply();
 
@@ -45,6 +61,7 @@ impl VftService {
     }
 
     pub fn burn(&mut self, from: ActorId, value: U256) {
+        self.only_admin();
         let balances = Storage::balances();
         let total_supply = Storage::total_supply();
 
@@ -68,6 +85,21 @@ impl VftService {
 
         let _ = self.notify_on(Events::Burned { from, value });
     }
+
+    pub fn change_admin(&mut self, new_admin: ActorId) {
+        self.only_admin();
+        set_admin(new_admin);
+    }
+
+    pub fn admin_address(&self) -> ActorId {
+        get_admin().clone()
+    }
+
+    fn only_admin(&self) {
+        let admin = get_admin();
+        assert_eq!(*admin, gstd::msg::source(), "Unauthorized access");
+    }
+
 }
 
 impl AsRef<BaseVftService> for VftService {
@@ -80,8 +112,8 @@ pub struct MyProgram;
 
 #[program]
 impl MyProgram {
-    pub fn new(name: String, symbol: String, decimals: u8) -> Self {
-        VftService::init(name, symbol, decimals);
+    pub fn new(name: String, symbol: String, decimals: u8, admin: ActorId) -> Self {
+        VftService::init(name, symbol, decimals, admin);
         Self
     }
 

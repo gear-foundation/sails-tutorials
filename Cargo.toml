@@ -16,9 +16,9 @@ version = "0.1.0"
 edition = "2021"
 
 [workspace.dependencies]
-sails-rs = { git = "https://github.com/gear-tech/sails" }
-gstd = { version = "1.4.2", features = ["debug"] }
-gwasm-builder = { package = "gear-wasm-builder", version = "1.4.2" }
-sails-idl-gen = { git = "https://github.com/gear-tech/sails" }
+sails-rs = "0.3.0"
+gstd = "=1.5.0"
+gwasm-builder = { version = "=1.5.0", package = "gear-wasm-builder" }
+sails-idl-gen = "0.3.0"
 parity-scale-codec = { version = "3.6", default-features = false }
 scale-info = { version = "2.10", default-features = false }

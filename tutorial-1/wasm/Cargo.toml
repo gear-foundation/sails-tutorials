@@ -11,6 +11,7 @@ sails-rs.workspace = true
 gwasm-builder.workspace = true
 hello-world = { path = "../app" }
 sails-idl-gen.workspace = true
+sails-rs.workspace = true
 
 [lib]
 crate-type = ["rlib"]

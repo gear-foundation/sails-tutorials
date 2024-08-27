@@ -46,7 +46,7 @@ impl Token {
         let state = State::get_mut();
         let balance = state.balances.entry(to).or_insert(U256::zero());
         *balance += value;
-        let _ = self.notify_on(Events::Minted { to, value });
+        self.notify_on(Events::Minted { to, value }).expect("Notification Error");
     }
 
     pub fn transfer(&mut self, from: ActorId, to: ActorId, value: U256) {
@@ -61,7 +61,7 @@ impl Token {
         let to_balance = state.balances.entry(to).or_insert(U256::zero());
         *to_balance += value;
 
-        let _ = self.notify_on(Events::Transferred { from, to, value });
+        self.notify_on(Events::Transferred { from, to, value }).expect("Notification Error");
     }
 
     pub fn name(&self) -> &'static str {
